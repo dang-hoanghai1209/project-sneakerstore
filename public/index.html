@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="vi" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShoeStore – Shop Giày Nam Nữ</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- CSS riêng -->
+  <link rel="stylesheet" href="dcr.css" />
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top border-bottom">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="#">
+      <i class="bi bi-bag-check-fill me-1"></i> SHOESTORE
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#hero">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#categories">Danh mục</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#products">Sản phẩm</a>
+        </li>
+        <li class="nav-item me-lg-2">
+          <button class="btn btn-link nav-link position-relative" type="button"
+                  data-bs-toggle="offcanvas" data-bs-target="#wishlistOffcanvas">
+            <i class="bi bi-heart"></i> Wishlist
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  id="wishlist-count">0</span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-primary" type="button"
+                  data-bs-toggle="modal" data-bs-target="#checkoutModal">
+            <i class="bi bi-credit-card me-1"></i> Thanh toán
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero-section py-5">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <p class="section-title mb-2">WELCOME TO SHOESTORE</p>
+        <h1 class="display-5 fw-bold mb-3">
+          Giày nam & nữ <span class="text-primary">đa phong cách</span> cho mọi ngày.
+        </h1>
+        <p class="lead text-secondary mb-4">
+          Từ sneakers năng động, boots cá tính tới giày chạy bộ chuyên nghiệp –
+          tất cả trong một nơi. Thanh toán linh hoạt, Wishlist tiện lợi và gợi ý sản phẩm thông minh.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="#products" class="btn btn-primary btn-lg">
+            <i class="bi bi-lightning-charge-fill me-1"></i> Mua ngay
+          </a>
+          <a href="#categories" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-collection me-1"></i> Xem danh mục
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-white rounded-4 shadow-sm p-4">
+          <div class="row g-3">
+            <div class="col-6">
+              <img src="images/bestsneakerlede0505.webp"
+                   alt="Men sneakers" class="img-fluid rounded-3">
+            </div>
+            <div class="col-6 d-flex flex-column gap-3">
+              <img src="images/bestsneakerlede0505.webp"
+                   alt="Women running shoes" class="img-fluid rounded-3">
+              <img src="images/bestsneakerlede0505.webp"
+                   alt="Unisex casual" class="img-fluid rounded-3">
+            </div>
+          </div>
+          <div class="d-flex justify-content-between mt-3 text-muted small">
+            <span><i class="bi bi-truck"></i> Giao nhanh 2–3 ngày</span>
+            <span><i class="bi bi-shield-check"></i> Hàng chính hãng</span>
+            <span><i class="bi bi-arrow-repeat"></i> Đổi trả 7 ngày</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories" class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <p class="section-title mb-0">DANH MỤC SẢN PHẨM</p>
+      <span class="text-secondary small">Chọn nhanh phân khúc bạn quan tâm</span>
+    </div>
+    <div class="row g-3">
+      <!-- Nam -->
+      <div class="col-6 col-md-3">
+        <div class="border rounded-4 p-3 category-pill h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Nam</h5>
+            <span class="badge text-bg-primary rounded-pill">20+</span>
+          </div>
+          <ul class="list-unstyled small mb-0 text-secondary">
+            <li>Sneakers lifestyle</li>
+            <li>Giày tây công sở</li>
+            <li>Giày chạy bộ</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Nữ -->
+      <div class="col-6 col-md-3">
+        <div class="border rounded-4 p-3 category-pill h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Nữ</h5>
+            <span class="badge rounded-pill" style="background:#f472b6;">18+</span>
+          </div>
+          <ul class="list-unstyled small mb-0 text-secondary">
+            <li>Giày sneaker nữ</li>
+            <li>Giày chạy, tập gym</li>
+            <li>Sandal & slip-on</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Unisex -->
+      <div class="col-6 col-md-3">
+        <div class="border rounded-4 p-3 category-pill h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Unisex</h5>
+            <span class="badge text-bg-dark rounded-pill">12+</span>
+          </div>
+          <ul class="list-unstyled small mb-0 text-secondary">
+            <li>Chunky sneakers</li>
+            <li>Giày canvas basic</li>
+            <li>Giày trượt ván</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Thể thao -->
+      <div class="col-6 col-md-3">
+        <div class="border rounded-4 p-3 category-pill h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Thể thao</h5>
+            <span class="badge text-bg-success rounded-pill">New</span>
+          </div>
+          <ul class="list-unstyled small mb-0 text-secondary">
+            <li>Running performance</li>
+            <li>Training & gym</li>
+            <li>Outdoor & hiking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<section class="pb-3">
+  <div class="container">
+    <div class="border rounded-4 px-3 py-2 bg-body-tertiary">
+      <div class="row g-2 align-items-center">
+        <div class="col-6 col-md-3">
+          <label class="small text-secondary mb-1">Giới tính</label>
+          <select class="form-select form-select-sm" id="filter-gender">
+            <option value="all">Tất cả</option>
+            <option value="men">Nam</option>
+            <option value="women">Nữ</option>
+            <option value="unisex">Unisex</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="small text-secondary mb-1">Danh mục</label>
+          <select class="form-select form-select-sm" id="filter-type">
+            <option value="all">Tất cả</option>
+            <option value="sneaker">Sneakers</option>
+            <option value="running">Running</option>
+            <option value="casual">Casual</option>
+            <option value="boot">Boots</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="small text-secondary mb-1">Sắp xếp</label>
+          <select class="form-select form-select-sm" id="filter-sort">
+            <option value="default">Mặc định</option>
+            <option value="price-asc">Giá tăng dần</option>
+            <option value="price-desc">Giá giảm dần</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="small text-secondary mb-1">Tìm kiếm</label>
+          <input type="text" class="form-control form-control-sm" id="search-input"
+                 placeholder="Tìm kiếm giày...">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="py-4 pb-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <p class="section-title mb-0">SẢN PHẨM NỔI BẬT</p>
+      <span class="text-secondary small" id="product-count-label">8 sản phẩm</span>
+    </div>
+
+    <div class="row g-4" id="product-grid">
+      <!-- Product 1 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="men" data-type="sneaker" data-price="1599000" data-name="Nam – AirFlex Street">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="AirFlex Street">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge text-bg-primary badge-gender">Nam</span>
+              <span class="badge text-bg-light text-muted">Sneaker</span>
+            </div>
+            <h6 class="card-title mb-1">AirFlex Street</h6>
+            <p class="card-text small text-muted mb-2">
+              Sneaker nam đế êm, phù hợp đi học, đi làm, dạo phố.
+            </p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <strong class="text-danger price-label">1.599.000 đ</strong>
+              <span class="small text-muted">Size 39–44</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="1">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="men" data-type="running" data-price="1899000" data-name="Nam – RunPro Velocity">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="RunPro Velocity">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge text-bg-primary badge-gender">Nam</span>
+              <span class="badge text-bg-success">Running</span>
+            </div>
+            <h6 class="card-title mb-1">RunPro Velocity</h6>
+            <p class="card-text small text-muted mb-2">
+              Giày chạy bộ hỗ trợ giảm chấn, phù hợp chạy 5–10km mỗi ngày.
+            </p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <strong class="text-danger price-label">1.899.000 đ</strong>
+              <span class="small text-muted">Size 40–44</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="2">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="women" data-type="sneaker" data-price="1499000" data-name="Nữ – LunaWave Chic">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="LunaWave Chic">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge badge-gender" style="background:#f472b6;">Nữ</span>
+              <span class="badge text-bg-light text-muted">Sneaker</span>
+            </div>
+            <h6 class="card-title mb-1">LunaWave Chic</h6>
+            <p class="card-text small text-muted mb-2">
+              Sneaker nữ form gọn, phối màu pastel hợp nhiều outfit.
+            </p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <strong class="text-danger price-label">1.499.000 đ</strong>
+              <span class="small text-muted">Size 36–40</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="3">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="women" data-type="running" data-price="1799000" data-name="Nữ – Aurora Sprint">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="Aurora Sprint">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge badge-gender" style="background:#f472b6;">Nữ</span>
+              <span class="badge text-bg-success">Running</span>
+            </div>
+            <h6 class="card-title mb-1">Aurora Sprint</h6>
+            <p class="card-text small text-muted mb-2">
+              Giày chạy bộ nữ trọng lượng nhẹ, thoáng khí, đế bám tốt.
+            </p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <strong class="text-danger price-label">1.799.000 đ</strong>
+              <span class="small text-muted">Size 36–40</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content_between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="4">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="unisex" data-type="casual" data-price="1299000" data-name="Unisex – Canvas Core">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="Canvas Core">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge text-bg-dark badge-gender">Unisex</span>
+              <span class="badge text-bg-secondary">Casual</span>
+            </div>
+            <h6 class="card-title mb-1">Canvas Core</h6>
+            <p class="card-text small text-muted mb-2">
+              Giày canvas cổ thấp, basic, phối được nhiều kiểu đồ.
+            </p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <strong class="text-danger price-label">1.299.000 đ</strong>
+              <span class="small text-muted">Size 36–43</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="5">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="unisex" data-type="sneaker" data-price="1699000" data-name="Unisex – Chunky Nova">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="Chunky Nova">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge text-bg-dark badge-gender">Unisex</span>
+              <span class="badge text-bg-light text-muted">Chunky</span>
+            </div>
+            <h6 class="card-title mb-1">Chunky Nova</h6>
+            <p class="card-text small text-muted mb-2">
+              Chunky sneaker đế cao, form trendy dành cho nam và nữ.
+            </p>
+            <div class="mt-auto d-flex justify-content_between align-items-center">
+              <strong class="text-danger price-label">1.699.000 đ</strong>
+              <span class="small text-muted">Size 37–43</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content-between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="6">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="men" data-type="boot" data-price="2099000" data-name="Nam – Urban Trail Boot">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="Urban Trail Boot">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge text-bg-primary badge-gender">Nam</span>
+              <span class="badge text-bg-dark">Boots</span>
+            </div>
+            <h6 class="card-title mb-1">Urban Trail Boot</h6>
+            <p class="card-text small text-muted mb-2">
+              Boot da nam cổ vừa, phong cách streetwear & outdoor.
+            </p>
+            <div class="mt-auto d-flex justify-content_between align-items-center">
+              <strong class="text-danger price-label">2.099.000 đ</strong>
+              <span class="small text-muted">Size 40–44</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content_between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="7">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="col-6 col-md-4 col-lg-3 product-col"
+           data-gender="women" data-type="boot" data-price="1999000" data-name="Nữ – CityLine Bootie">
+        <div class="card h-100 product-card shadow-sm border-0">
+          <img src="images/bestsneakerlede0505.webp"
+               class="card-img-top" alt="CityLine Bootie">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge badge-gender" style="background:#f472b6;">Nữ</span>
+              <span class="badge text-bg-dark">Boots</span>
+            </div>
+            <h6 class="card-title mb-1">CityLine Bootie</h6>
+            <p class="card-text small text-muted mb-2">
+              Boot cổ thấp, hợp đi làm lẫn đi chơi, phối được quần jean & váy.
+            </p>
+            <div class="mt-auto d-flex justify-content_between align-items-center">
+              <strong class="text-danger price-label">1.999.000 đ</strong>
+              <span class="small text-muted">Size 36–40</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
+            <div class="d-flex justify-content_between align-items-center gap-2">
+              <button class="btn btn-outline-primary btn-sm flex-grow-1 add-to-cart-btn">
+                <i class="bi bi-cart-plus me-1"></i> Thêm giỏ
+              </button>
+              <button class="btn btn-outline-secondary btn-sm wishlist-btn"
+                      data-product-id="8">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="btn btn-outline-dark btn-sm btn-details"
+                      data-bs-toggle="modal" data-bs-target="#productModal">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+<!-- PAYMENT & TRUST SECTION -->
+<section class="bg-body-tertiary py-4 border-top">
+  <div class="container">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-6">
+        <p class="section-title mb-1">PHƯƠNG THỨC THANH TOÁN</p>
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-1">
+          <span class="payment-logo"><i class="bi bi-credit-card-2-front"></i></span>
+          <span class="payment-logo"><i class="bi bi-paypal"></i></span>
+          <span class="payment-logo"><i class="bi bi-bank"></i></span>
+          <span class="payment-logo"><i class="bi bi-phone"></i></span>
+        </div>
+        <p class="small text-secondary mb-0">
+          Hỗ trợ thẻ Visa/Master/JCB, chuyển khoản ngân hàng, ví điện tử (Momo, ZaloPay*)
+          và thanh toán khi nhận hàng (COD).
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p class="section-title mb-1">CHÍNH SÁCH MUA HÀNG</p>
+        <ul class="small text-secondary mb-0">
+          <li>Đổi size miễn phí trong vòng 7 ngày nếu giày còn nguyên tem & chưa sử dụng ngoài trời.</li>
+          <li>Bảo hành keo & đế trong 6 tháng với lỗi kỹ thuật.</li>
+          <li>Hỗ trợ tư vấn chọn size qua chat trực tuyến và hotline.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-4 border-top">
+  <div class="container">
+    <div class="row gy-3 align-items-center">
+      <div class="col-md-6">
+        <small class="text-secondary">
+          © 2025 ShoeStore. Template demo – code bởi bạn với Bootstrap 5.
+        </small>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <small class="text-secondary">
+          <i class="bi bi-geo-alt"></i> Nha Trang – Việt Nam &nbsp;·&nbsp;
+          <i class="bi bi-instagram"></i> @shoestore.vn
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WISHLIST OFFCANVAS -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="wishlistOffcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"><i class="bi bi-heart me-1 text-danger"></i> Wishlist</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p class="small text-secondary mb-2">
+      Những đôi giày bạn đang “crush” – lưu lại để xem sau hoặc đưa vào giỏ hàng.
+    </p>
+    <ul class="list-group small" id="wishlist-list">
+      <!-- JS sẽ đổ dữ liệu -->
+    </ul>
+    <div class="mt-3 d-grid gap-2">
+      <button class="btn btn-primary" id="wishlist-checkout"
+        data-bs-toggle="modal" data-bs-target="#checkoutModal">
+        <i class="bi bi-credit-card me-1"></i> Đặt hàng ngay
+      </button>
+      <button class="btn btn-outline-secondary btn-sm" id="wishlist-clear">
+        <i class="bi bi-trash3 me-1"></i> Xoá toàn bộ Wishlist
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL + RECOMMENDATIONS -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalTitle">Chi tiết sản phẩm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-5">
+            <img src="images/bestsneakerlede0505.webp"
+                 id="productModalImage"
+                 class="img-fluid rounded-3" alt="">
+          </div>
+          <div class="col-md-7">
+            <span class="badge text-bg-secondary mb-2" id="productModalTags"></span>
+            <h4 class="mb-2" id="productModalName">Tên sản phẩm</h4>
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <strong class="text-danger fs-5" id="productModalPrice">1.599.000 đ</strong>
+              <span class="small text-muted"><i class="bi bi-truck"></i> Giao 2–3 ngày</span>
+            </div>
+            <p class="small text-secondary mb-2">
+              Mô tả demo: giày thiết kế ôm chân, chất liệu thoáng khí, phù hợp đi làm, đi học, tập nhẹ.
+              Bạn có thể chỉnh sửa phần mô tả này theo sản phẩm thật.
+            </p>
+            <div class="mb-3">
+              <label class="small text-secondary mb-1">Chọn size</label>
+              <div class="d-flex flex-wrap gap-1">
+                <button class="btn btn-outline-secondary btn-sm size-btn">36</button>
+                <button class="btn btn-outline-secondary btn-sm size-btn">37</button>
+                <button class="btn btn-outline-secondary btn-sm size-btn">38</button>
+                <button class="btn btn-outline-secondary btn-sm size-btn">39</button>
+                <button class="btn btn-outline-secondary btn-sm size-btn">40</button>
+                <button class="btn btn-outline-secondary btn-sm size-btn">41</button>
+                <button class="btn btn-outline-secondary btn-sm size-btn">42</button>
+              </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-primary" id="modal-add-to-cart">
+                <i class="bi bi-cart-plus me-1"></i> Thêm vào giỏ
+              </button>
+              <button class="btn btn-outline-secondary">
+                <i class="bi bi-heart me-1"></i> Thêm vào Wishlist
+              </button>
+            </div>
+            <p class="small text-danger mt-2 d-none" id="size-error">
+              Vui lòng chọn size trước khi thêm vào giỏ.
+            </p>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <p class="section-title mb-2">GỢI Ý CHO BẠN</p>
+        <div class="row g-3" id="recommendation-row">
+          <!-- JS sẽ render 3 sản phẩm gợi ý cùng giới tính / loại -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL (CỔNG THANH TOÁN) -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-credit-card-2-front me-1"></i>
+          Thanh toán & Đặt hàng
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <p class="section-title mb-2">THÔNG TIN KHÁCH HÀNG</p>
+            <div class="mb-2">
+              <label class="form-label small mb-1">Họ tên</label>
+              <input type="text" class="form-control form-control-sm" placeholder="VD: Nguyễn Văn A">
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-1">Số điện thoại</label>
+              <input type="tel" class="form-control form-control-sm" placeholder="VD: 09xx xxx xxx">
+            </div>
+            <div class="mb-2">
+              <label class="form-label small mb-1">Địa chỉ giao hàng</label>
+              <textarea class="form-control form-control-sm" rows="3"
+                        placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"></textarea>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p class="section-title mb-2">PHƯƠNG THỨC THANH TOÁN</p>
+            <div class="list-group small mb-3">
+              <label class="list-group-item d-flex align-items-center gap-2">
+                <input class="form-check-input" type="radio" name="payment-method" checked>
+                <i class="bi bi-credit-card-2-front"></i>
+                <span>Thẻ Visa / MasterCard / JCB</span>
+              </label>
+              <label class="list-group-item d-flex align-items-center gap-2">
+                <input class="form-check-input" type="radio" name="payment-method">
+                <i class="bi bi-bank"></i>
+                <span>Chuyển khoản ngân hàng</span>
+              </label>
+              <label class="list-group-item d-flex align-items-center gap-2">
+                <input class="form-check-input" type="radio" name="payment-method">
+                <i class="bi bi-phone"></i>
+                <span>Ví điện tử (Momo / ZaloPay)*</span>
+              </label>
+              <label class="list-group-item d-flex align-items-center gap-2">
+                <input class="form-check-input" type="radio" name="payment-method">
+                <i class="bi bi-cash-coin"></i>
+                <span>Thanh toán khi nhận hàng (COD)</span>
+              </label>
+            </div>
+            <p class="small text-secondary mb-1">
+              * Giao diện demo – khi triển khai thật bạn sẽ tích hợp API cổng thanh toán (VD: VNPay, Momo, ZaloPay...).
+            </p>
+            <hr class="my-3">
+            <p class="section-title mb-2">TÓM TẮT ĐƠN HÀNG</p>
+            <ul class="list-group small mb-2" id="order-summary">
+              <!-- JS sẽ render sản phẩm trong giỏ -->
+            </ul>
+            <div class="d-flex justify-content-between align-items-center small mb-1">
+              <span>Tạm tính:</span>
+              <strong id="order-total">0 đ</strong>
+            </div>
+            <div class="small text-danger d-none" id="checkout-error"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <div class="small text-secondary">
+          <i class="bi bi-shield-check"></i> Đơn hàng của bạn được bảo mật & mã hoá.
+        </div>
+        <button type="button" class="btn btn-primary" id="checkout-submit">
+          Xác nhận đặt hàng
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS + Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

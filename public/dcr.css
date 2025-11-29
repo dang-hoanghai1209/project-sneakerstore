@@ -1,44 +1,162 @@
-    .brand-logo {
-        font-weight: 700;
-        letter-spacing: 0.08em;
-      }
-      .hero-section {
-        background: radial-gradient(circle at top left, #f8fafc, #e2e8f0);
-      }
-      .category-pill {
-        transition: transform .15s ease, box-shadow .15s ease;
-      }
-      .category-pill:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 1rem rgba(15,23,42,0.15);
-      }
-      .product-card img {
-        object-fit: cover;
-        height: 210px;
-      }
-      .product-card .badge-gender {
-        font-size: 0.7rem;
-      }
-      .wishlist-btn.active {
-        color: #e11d48 !important; /* hồng đậm */
-      }
-      .payment-logo {
-        font-size: 1.7rem;
-      }
-      .section-title {
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        color: #64748b;
-      }
-      #productModal .size-btn.active {
-        background-color: #0d6efd;
-        color: #fff;
-        border-color: #0d6efd;
-      }
-      .hero-section .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
+/* ====== BRAND / HERO / BASE ====== */
+
+.brand-logo {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.hero-section {
+  background: radial-gradient(circle at top left, #f8fafc, #e2e8f0);
+}
+
+.hero-section .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ====== CATEGORY PILL ====== */
+
+.category-pill {
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.category-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.15);
+}
+
+/* ====== PRODUCT CARD ====== */
+
+.product-card img {
+  object-fit: cover;
+  height: 210px;
+}
+
+.product-card .badge-gender {
+  font-size: 0.7rem;
+}
+
+.wishlist-btn.active {
+  color: #e11d48 !important; /* hồng đậm */
+}
+
+.payment-logo {
+  font-size: 1.7rem;
+}
+
+.section-title {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ====== MINI VARIANT PICKER TRÊN CARD ====== */
+
+.mini-variant-picker {
+  background-color: #f9fafb;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+}
+
+.mini-size-pill {
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  cursor: default;
+  background-color: #fff;
+}
+
+.mini-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mini-color-blue   { background-color: #3b82f6; }
+.mini-color-red    { background-color: #ef4444; }
+.mini-color-yellow { background-color: #facc15; }
+.mini-color-purple { background-color: #a855f7; }
+
+/* ====== MODAL: SIZE & COLOR PICKER ====== */
+
+/* chấm màu chung */
+.color-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  margin-right: 4px;
+}
+
+/* màu cho chấm */
+.color-xanh { background-color: #0d6efd; }
+.color-do   { background-color: #dc3545; }
+.color-vang { background-color: #ffc107; }
+.color-tim  { background-color: #a855f7; }
+
+/* Trường hợp bạn dùng class bg-purple ở đâu đó */
+.bg-purple {
+  background-color: #a855f7;
+}
+
+/* NÚT SIZE trong modal */
+#productModal .size-btn {
+  border-radius: 999px;
+  min-width: 40px;
+  font-size: 0.85rem;
+  transition: all 0.15s ease-in-out;
+}
+
+#productModal .size-btn:hover,
+#productModal .size-btn.active {
+  background-color: #111;      /* giống style FashionNova */
+  border-color: #111;
+  color: #fff;
+}
+
+/* NÚT MÀU trong modal – base */
+#productModal .color-btn {
+  border-radius: 999px;
+  font-size: 0.85rem;
+  padding-inline: 0.6rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.15s ease-in-out;
+}
+
+/* Hover + chọn theo từng màu */
+#productModal .color-btn[data-color="Xanh"]:hover,
+#productModal .color-btn[data-color="Xanh"].active {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: #000;
+}
+
+#productModal .color-btn[data-color="Đỏ"]:hover,
+#productModal .color-btn[data-color="Đỏ"].active {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+
+#productModal .color-btn[data-color="Vàng"]:hover,
+#productModal .color-btn[data-color="Vàng"].active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000;
+}
+
+#productModal .color-btn[data-color="Tím"]:hover,
+#productModal .color-btn[data-color="Tím"].active {
+  background-color: #a855f7;
+  border-color: #a855f7;
+  color: #fff;
+}

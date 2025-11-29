@@ -92,6 +92,24 @@ const productModalPrice = document.getElementById("productModalPrice");
 const productModalImage = document.getElementById("productModalImage");
 const productModalTags = document.getElementById("productModalTags");
 const recommendationRow = document.getElementById("recommendation-row");
+const sizeButtons = Array.from(document.querySelectorAll("#productModal .size-btn"));
+const colorButtons = Array.from(document.querySelectorAll("#productModal .color-btn"));
+let selectedColor = null;
+
+colorButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    colorButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedColor = btn.dataset.color || btn.textContent.trim();
+    console.log("Màu đã chọn:", selectedColor);
+  });
+});
+const btnModalAddCart = document.getElementById("btn-modal-add-cart");
+
+let selectedSize = null;
+let selectedColor = null;
+let currentProductId = null; // nếu sau này bạn muốn gắn id sản phẩm
+
 
 // các nút chọn size trong modal
 const sizeButtons = Array.from(
@@ -108,12 +126,147 @@ let currentModalProductPrice = 0;
 document.querySelectorAll(".btn-details").forEach((btn) => {
   btn.addEventListener("click", function () {
     const col = btn.closest(".product-col");
-    const id = col.getAttribute("data-product-id");
     const title = col.getAttribute("data-name");
     const price = Number(col.getAttribute("data-price"));
     const gender = col.getAttribute("data-gender");
     const type = col.getAttribute("data-type");
     const imgSrc = col.querySelector("img").src;
+    const productId = col.getAttribute("data-product-id") || null;
+
+    // Reset size + màu mỗi lần mở modal
+    selectedSize = null;
+    selectedColor = null;
+    currentProductId = productId;
+
+    sizeButtons.forEach((b) => b.classList.remove("active"));
+    colorButtons.forEach((b) => b.classList.remove("active"));
+
+    // Đổ dữ liệu vào modal
+    productModalName.textContent = title;
+    productModalPrice.textContent = formatPrice(price);
+    productModalImage.src = imgSrc;
+    productModalImage.alt = title;
+    productModalTags.textContent = gender.toUpperCase() + " · " + type;
+
+    // (phần gợi ý sản phẩm bạn giữ nguyên như cũ)
+    const allCols = Array.from(document.querySelectorAll(".product-col"));
+    const currentIndex = allCols.indexOf(col);
+
+    const candidates = allCols.filter((c, idx) => {
+      if (idx === currentIndex) return false;
+      const g = c.getAttribute("data-gender");
+      const t = c.getAttribute("data-type");
+      return g === gender || t === type;
+    });
+
+    recommendationRow.innerHTML = "";
+    if (candidates.length === 0) {
+      const colEmpty = document.createElement("div");
+      colEmpty.className = "col-12";
+      colEmpty.innerHTML = `
+        <div class="text-center text-secondary small">
+          Chưa có gợi ý tương tự. Bạn có thể bổ sung thêm sản phẩm trong HTML.
+        </div>`;
+      recommendationRow.appendChild(colEmpty);
+      return;
+    }
+
+    candidates.slice(0, 3).forEach((c) => {
+      const recName = c.getAttribute("data-name");
+      const recPrice = Number(c.getAttribute("data-price"));
+      const recImg = c.querySelector("img").src;
+
+      const recCol = document.createElement("div");
+      recCol.className = "col-12 col-md-4";
+      recCol.innerHTML = `
+        <div class="card h-100 border-0 shadow-sm">
+          <img src="${recImg}" class="card-img-top" alt="${recName}">
+          <div class="card-body py-2 px-3">
+            <h6 class="card-title mb-1 small">${recName}</h6>
+            <div class="small text-danger fw-semibold">${formatPrice(recPrice)}</div>
+          </div>
+        </div>
+      `;
+      recommendationRow.appendChild(recCol);
+    });
+  });
+});
+
+// Chọn size
+sizeButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    sizeButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedSize = btn.dataset.size || btn.textContent.trim();
+    console.log("Size đã chọn:", selectedSize);
+  });
+});
+
+// Chọn size
+sizeButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    sizeButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedSize = btn.dataset.size || btn.textContent.trim();
+    console.log("Size đã chọn:", selectedSize);
+  });
+});
+
+// Chọn màu
+colorButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    colorButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedColor = btn.dataset.color || btn.textContent.trim();
+    console.log("Màu đã chọn:", selectedColor);
+  });
+});
+
+// Thêm vào giỏ – cần size + màu
+btnModalAddCart.addEventListener("click", () => {
+  if (!requireVariantSelected()) return;
+
+  const productName = productModalName.textContent;
+
+  // Ở đây bạn có thể push vào 1 mảng cart[] để xử lý sau.
+  console.log("Add to cart:", {
+    id: currentProductId,
+    name: productName,
+    size: selectedSize,
+    color: selectedColor,
+  });
+
+  alert(
+    `Đã thêm vào giỏ:\n${productName}\nSize: ${selectedSize}\nMàu: ${selectedColor}`
+  );
+});
+
+// Mua ngay – mở modal thanh toán nếu đã chọn size + màu
+btnModalBuyNow.addEventListener("click", () => {
+  if (!requireVariantSelected()) return;
+
+  const checkoutModalEl = document.getElementById("checkoutModal");
+  const checkoutModal = new bootstrap.Modal(checkoutModalEl);
+  checkoutModal.show();
+
+  // Sau này bạn có thể fill sẵn thông tin đơn hàng vào checkout
+  console.log("Mua ngay:", {
+    id: currentProductId,
+    name: productModalName.textContent,
+    size: selectedSize,
+    color: selectedColor,
+  });
+});
+
+// Chọn màu
+colorButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    colorButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedColor = btn.dataset.color || btn.textContent.trim();
+    console.log("Màu đã chọn:", selectedColor);
+  });
+});
 
     currentModalProductId = id;
     currentModalProductName = title;

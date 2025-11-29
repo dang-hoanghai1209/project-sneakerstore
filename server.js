@@ -1,32 +1,44 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const products = require('./data/products'); // import dữ liệu giày
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const { getPool } = require("./db");   // <-- lấy hàm kết nối SQL
 
 const app = express();
 const PORT = 3000;
 
-// Cho phép gọi API từ trình duyệt
 app.use(cors());
-// Cho phép server đọc JSON body (khi POST)
 app.use(express.json());
 
-// Serve file tĩnh (frontend) trong thư mục /public
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve frontend tĩnh trong thư mục /public
+app.use(express.static(path.join(__dirname, "public")));
 
-// ====== API PRODUCTS ======
-
-// Lấy danh sách sản phẩm
-app.get('/api/products', (req, res) => {
-  res.json(products);
+// Route test đơn giản xem server Node chạy chưa
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", message: "Server is running" });
 });
 
-// Thử endpoint đơn giản để test
-app.get('/api/hello', (req, res) => {
-  res.send('Server Node.js đang chạy OK!');
+// ✅ ROUTE TEST KẾT NỐI SQL
+app.get("/api/test-db", async (req, res) => {
+  try {
+    const pool = await getPool();
+
+    // Query thử 1 câu rất đơn giản
+    const result = await pool.request().query(`
+      SELECT 
+        @@SERVERNAME AS serverName,
+        DB_NAME()     AS currentDatabase,
+        GETDATE()     AS serverTime
+    `);
+
+    res.json(result.recordset[0]); // trả về 1 object JSON
+  } catch (err) {
+    console.error("❌ Error in /api/test-db:", err);
+    res.status(500).json({ error: "Lỗi kết nối database", detail: err.message });
+  }
 });
 
-// ====== START SERVER ======
+// (Sau này bạn thêm /api/products, /api/orders ở phía dưới)
+
 app.listen(PORT, () => {
-  console.log(`✅ Server chạy tại: http://localhost:${PORT}`);
+  console.log(`🚀 Server is running at http://localhost:${PORT}`);
 });

@@ -5,7 +5,7 @@ const { getPool } = require("./db");   // <-- lấy hàm kết nối SQL
 
 const app = express();
 
-// ❗ RẤT QUAN TRỌNG: dùng PORT của môi trường (Fly.io sẽ set biến này)
+// ❗ PORT phải lấy từ môi trường, mặc định 8080
 const PORT = process.env.PORT || 8080;
 
 app.use(cors());
@@ -24,7 +24,6 @@ app.get("/api/test-db", async (req, res) => {
   try {
     const pool = await getPool();
 
-    // Query thử 1 câu rất đơn giản
     const result = await pool.request().query(`
       SELECT 
         @@SERVERNAME AS serverName,
@@ -32,16 +31,14 @@ app.get("/api/test-db", async (req, res) => {
         GETDATE()     AS serverTime
     `);
 
-    res.json(result.recordset[0]); // trả về 1 object JSON
+    res.json(result.recordset[0]);
   } catch (err) {
     console.error("❌ Error in /api/test-db:", err);
     res.status(500).json({ error: "Lỗi kết nối database", detail: err.message });
   }
 });
 
-// (Sau này bạn thêm /api/products, /api/orders ở phía dưới)
-
-// ❗ Với Fly.io nên listen trên 0.0.0.0
+// ❗ BẮT BUỘC: listen trên 0.0.0.0 chứ không phải localhost
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server is running at http://localhost:${PORT}`);
+  console.log(`🚀 Server is running at http://0.0.0.0:${PORT}`);
 });

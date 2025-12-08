@@ -35,5 +35,9 @@ FROM base
 # Copy built application
 COPY --from=build /app /app
 
+# PORT cho app (khớp với fly.toml và server.js)
+ENV PORT=8080
+EXPOSE 8080
+
 # Start the server by default, this can be overwritten at runtime
 CMD [ "npm", "run", "start" ]

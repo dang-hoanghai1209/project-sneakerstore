@@ -5,7 +5,7 @@ const { getPool } = require("./db");
 
 const app = express();
 
-// ❗ PORT PHẢI LÀ 8080 TRÊN FLY.IO
+// PORT Fly.io cấp, fallback 8080
 const PORT = process.env.PORT || 8080;
 
 app.use(cors());
@@ -27,11 +27,12 @@ app.get("/api/test-db", async (req, res) => {
     `);
     res.json(result.recordset[0]);
   } catch (err) {
+    console.error("❌ Error in /api/test-db:", err);
     res.status(500).json({ error: err.message });
   }
 });
 
-// ❗ BẮT BUỘC: 0.0.0.0 chứ không phải localhost
+// BẮT BUỘC: 0.0.0.0, không phải localhost
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server is running at http://0.0.0.0:${PORT}`);
 });

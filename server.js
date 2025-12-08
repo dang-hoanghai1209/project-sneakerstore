@@ -6,7 +6,7 @@ const { getPool } = require("./db");   // <-- lấy hàm kết nối SQL
 const app = express();
 
 // ❗ RẤT QUAN TRỌNG: dùng PORT của môi trường (Fly.io sẽ set biến này)
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());

@@ -1,22 +1,22 @@
 const sql = require("mssql");
 
-// ⚠ Thay đổi password cho đúng với bạn đặt lúc tạo login
+// Config for Render – read everything from env vars
 const config = {
-  user: "hai_user",
-  password: "12344",       // <-- sửa thành pass thật của bạn
-  server: "localhost",          // cùng máy thì để localhost là được
-  database: "master",           // tạm thời test với master, lát nữa đổi sang ShoeStoreDB
+  user: "process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_HOST,              // e.g. your public IP or cloud SQL host
+  port: Number(process.env.DB_PORT) || 1433,
+  database: process.env.DB_NAME,
   options: {
-    encrypt: false,             // local nên false
-    trustServerCertificate: true
+    encrypt: true,                          // for cloud DBs usually true
+    trustServerCertificate: true            // keep true to avoid TLS issues
   }
 };
 
 let pool;
 
 /**
- * Lấy connection pool dùng chung.
- * Gọi getPool() ở bất kỳ đâu để dùng.
+ * Get a shared connection pool.
  */
 async function getPool() {
   if (pool) return pool;

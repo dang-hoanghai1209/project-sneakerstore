@@ -1,37 +1,25 @@
-const sql = require("mssql");
+const { Pool } = require("pg");
 
-// Config for Render – read everything from env vars
-const config = {
-  user: "process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  server: process.env.DB_HOST,              // e.g. your public IP or cloud SQL host
-  port: Number(process.env.DB_PORT) || 1433,
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   database: process.env.DB_NAME,
-  options: {
-    encrypt: true,                          // for cloud DBs usually true
-    trustServerCertificate: true            // keep true to avoid TLS issues
-  }
-};
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  ssl: {
+    rejectUnauthorized: false, // Render yêu cầu SSL
+  },
+});
 
-let pool;
-
-/**
- * Get a shared connection pool.
- */
-async function getPool() {
-  if (pool) return pool;
-
+async function testConnection() {
   try {
-    pool = await sql.connect(config);
-    console.log("✅ Connected to SQL Server");
-    return pool;
+    const res = await pool.query("SELECT NOW()");
+    console.log("✅ PostgreSQL connected:", res.rows[0]);
   } catch (err) {
-    console.error("❌ DB connection error:", err);
-    throw err;
+    console.error("❌ PostgreSQL connection error:", err);
   }
 }
 
-module.exports = {
-  sql,
-  getPool
-};
+testConnection();
+
+module.exports = pool;

@@ -31,14 +31,21 @@ app.get("/api/test-db", async (req, res) => {
   }
 });
 
+// ------------------------------
 // PRODUCTS API
+// ------------------------------
 app.get("/api/products", async (req, res) => {
   try {
     const pool = await getPool();
     const result = await pool.query(`
-      SELECT id, name, brand, price, image_url
+      SELECT
+        product_id   AS id,
+        product_name AS name,
+        price,
+        image_url
       FROM products
-      ORDER BY id ASC
+      WHERE is_active = TRUE
+      ORDER BY product_id ASC
     `);
     res.json(result.rows);
   } catch (err) {

@@ -1,3 +1,7 @@
+// server.js
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -27,9 +31,7 @@ app.get("/api/test-db", async (req, res) => {
   }
 });
 
-// ------------------------------
 // PRODUCTS API
-// ------------------------------
 app.get("/api/products", async (req, res) => {
   try {
     const pool = await getPool();
@@ -45,9 +47,6 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-// ------------------------------
-// Start server
-// ------------------------------
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running at http://0.0.0.0:${PORT}`);
 });

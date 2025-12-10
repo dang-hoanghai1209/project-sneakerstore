@@ -16,12 +16,21 @@ let pool;
 
 function getPool() {
   if (!pool) {
+    // check nhanh xem có thiếu env nào không
+    if (!poolConfig.host) {
+      console.error("❌ DB_HOST is missing");
+    }
+    if (!poolConfig.database) {
+      console.error("❌ DB_NAME is missing");
+    }
+    if (!poolConfig.user) {
+      console.error("❌ DB_USER is missing");
+    }
+
     pool = new Pool(poolConfig);
-    console.log("✅ Connected to Supabase Postgres");
+    console.log("✅ Pool to Supabase Postgres created");
   }
   return pool;
 }
 
-module.exports = {
-  getPool,
-};
+module.exports = { getPool };

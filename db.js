@@ -8,7 +8,7 @@ const poolConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   ssl: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: false, // Supabase yêu cầu SSL
   },
 };
 
@@ -16,6 +16,7 @@ let pool;
 
 function getPool() {
   if (!pool) {
+    // Log để xem Render đang dùng host / user nào
     console.log("⭐ DB config (safe):", {
       host: poolConfig.host,
       port: poolConfig.port,

@@ -8,7 +8,7 @@ const poolConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   ssl: {
-    rejectUnauthorized: false, // Supabase yêu cầu SSL, Render OK
+    rejectUnauthorized: false,
   },
 };
 
@@ -16,16 +16,16 @@ let pool;
 
 function getPool() {
   if (!pool) {
-    // check nhanh xem có thiếu env nào không
-    if (!poolConfig.host) {
-      console.error("❌ DB_HOST is missing");
-    }
-    if (!poolConfig.database) {
-      console.error("❌ DB_NAME is missing");
-    }
-    if (!poolConfig.user) {
-      console.error("❌ DB_USER is missing");
-    }
+    console.log("⭐ DB config (safe):", {
+      host: poolConfig.host,
+      port: poolConfig.port,
+      database: poolConfig.database,
+      user: poolConfig.user,
+    });
+
+    if (!poolConfig.host) console.error("❌ DB_HOST is missing");
+    if (!poolConfig.database) console.error("❌ DB_NAME is missing");
+    if (!poolConfig.user) console.error("❌ DB_USER is missing");
 
     pool = new Pool(poolConfig);
     console.log("✅ Pool to Supabase Postgres created");
